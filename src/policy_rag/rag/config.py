@@ -1,0 +1,15 @@
+'''Documentation String'''
+
+#chunking
+CHUNK_SIZE = 200
+CHUNK_OVERLAP = 50
+
+#vector database
+COLLECTION_NAME = "corporate_policies"
+SIMILARITY_METRIC = "cosine"
+
+#embedding
+EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+
+#retrieval
+TOP_K = 3
