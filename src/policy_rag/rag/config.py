@@ -1,4 +1,8 @@
 '''Documentation String'''
+from pathlib import Path
+
+#documents / dataset
+DATA_DIR = Path(__file__).resolve().parents[3] / "policy-docs"
 
 #chunking
 CHUNK_SIZE = 200
