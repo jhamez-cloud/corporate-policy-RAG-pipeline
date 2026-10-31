@@ -1,3 +1,4 @@
+from policy_rag.rag.documents import load_documents
 from policy_rag.rag.chunking import load_and_chunk_documents
 from policy_rag.rag.vector_store import setup_vector_database
 from policy_rag.rag.query import process_user_query
@@ -7,7 +8,8 @@ from policy_rag.rag.generation import generate_response
 
 def build_index():
     """Load Documents, Chunk Documents, Create Vector DB Collection"""
-    chunks = load_and_chunk_documents()
+    documents = load_documents()
+    chunks = load_and_chunk_documents(documents)
     collection = setup_vector_database(chunks)
 
     return collection
