@@ -1,13 +1,13 @@
 '''Documentation String'''
 from typing import Dict,List
 from policy_rag.rag.config import CHUNK_SIZE, CHUNK_OVERLAP
-from policy_rag.rag.documents import POLICY_DOCUMENTS
+# from policy_rag.rag.documents import POLICY_DOCUMENTS
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
-def load_and_chunk_documents() -> List[Dict]:
+def load_and_chunk_documents(documents: List[Dict]) -> List[Dict]:
     print("SECTION 1: DOCUMENT LOADING & CHUNKING")
     print("=" * 50)
-    print(f"📄 Loaded {len(POLICY_DOCUMENTS)} policy documents")
+    print(f"📄 Loaded {len(documents)} policy documents")
 
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=CHUNK_SIZE,
@@ -17,7 +17,7 @@ def load_and_chunk_documents() -> List[Dict]:
     )
 
     all_chunks=[]
-    for doc in POLICY_DOCUMENTS:
+    for doc in documents:
         for i,chunk in enumerate(splitter.split_text(doc["content"]),1):
             all_chunks.append({
                 "id": f"{doc['id']}_chunk_{i}",
@@ -28,7 +28,7 @@ def load_and_chunk_documents() -> List[Dict]:
             })
 
     avg = sum(len(chunk["content"]) for chunk in all_chunks) // len(all_chunks)
-    print(f"Created {len(all_chunks)} chunks from {len(POLICY_DOCUMENTS)} documents")
+    print(f"Created {len(all_chunks)} chunks from {len(documents)} documents")
     print(f"Average chunk size: {avg} characters")
 
     #print(all_chunks)
