@@ -17,3 +17,7 @@ EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 
 #retrieval
 TOP_K = 3
+
+#llm model
+LLM_MODEL = "gemini-3.8-flash"
+LLM_MAX_TOKENS = 1000
